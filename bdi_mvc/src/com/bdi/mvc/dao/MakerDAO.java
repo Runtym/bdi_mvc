@@ -11,4 +11,5 @@ public interface MakerDAO {
 	public int insertMaker(Maker mk);
 	public Map<String,Object> updateMaker(Maker mk);
 	public Map<String,Object> deleteMaker(Maker mk);
+	public int updateMakerTotal(int mNum);
 }

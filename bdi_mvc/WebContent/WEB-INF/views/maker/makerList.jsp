@@ -16,13 +16,14 @@
 				</tr>
 			</thead>
 			<tbody>
+			<%=request.getAttribute("list")%>
 			<c:forEach	items="${list}" var="m">
 				<tr>
 					<td>${m.mnum}</td>
 					<td><a href="/maker/makerView?mNum=${m.mnum}">${m.mname}</a></td>
 					<td>${m.mprice}</td>
 					<td>${m.mcnt}</td>
-					<td>${m.mprice*m.mcnt}</td>
+					<td>${m.mtotal}</td>
 					<td>${m.mdesc}</td>
 				</tr>
 			</c:forEach>

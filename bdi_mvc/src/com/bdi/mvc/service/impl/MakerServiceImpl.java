@@ -27,7 +27,7 @@ public class MakerServiceImpl implements MakerService {
 		Map<String, Object> rMap = new HashMap<String,Object>();
 		rMap.put("msg", "메이커 등록 오류!");
 		rMap.put("success", "false");
-		if(mdao.insertMaker(mk)==1) {
+		if(mdao.insertMaker(mk)==2) {
 			rMap.put("msg", "정상적으로 등록 되었습니다.");
 			rMap.put("success", "true");
 		}
