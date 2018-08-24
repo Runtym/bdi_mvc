@@ -89,9 +89,32 @@ public class MakerDAOImpl implements MakerDAO {
 	}
 
 	@Override
-	public Map<String, Object> insertMaker(Maker mk) {
-		// TODO Auto-generated method stub
-		return null;
+	public int insertMaker(Maker mk) {
+		Connection con = DBCon.getCon();
+		PreparedStatement ps = null;
+		String sql = "insert into maker(mName, mPrice, mCnt, mTotal, mDesc)";
+		sql += "values(?,?,?,?,?)";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, mk.getMname());
+			ps.setInt(2, mk.getMprice());
+			ps.setInt(3, mk.getMcnt());
+			ps.setInt(4, mk.getMtotal());
+			ps.setString(5, mk.getMdesc());
+			return ps.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(ps!=null) {
+					ps.close();
+				}
+			}catch(SQLException e) {
+				
+			}
+			DBCon.close();
+		}
+		return 0;
 	}
 
 	@Override

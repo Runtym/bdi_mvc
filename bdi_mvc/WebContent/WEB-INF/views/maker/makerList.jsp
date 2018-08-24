@@ -28,6 +28,14 @@
 			</c:forEach>
 			</tbody>	
 		</table>
+		<div>
+			<button onclick="goPage()">메이커등록</button>
+		</div>
 	</div>
+<script>
+	function goPage(){
+		location.href='/views/maker/makerInsert';
+	}
+</script>
 </body>
 </html>
