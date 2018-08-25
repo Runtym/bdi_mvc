@@ -41,8 +41,10 @@ public class MakerServiceImpl implements MakerService {
 		rMap.put("success", "false");
 		int cnt = mdao.updateMaker(mk);
 		if(cnt==1) {
-			rMap.put("msg", "수정 성공");
-			rMap.put("success", "true");
+			if(mdao.updateMakerTotal(mk.getMnum())==1) {
+				rMap.put("msg", "수정 성공");
+				rMap.put("success", "true");
+			}
 		}
 		return rMap;
 	}
