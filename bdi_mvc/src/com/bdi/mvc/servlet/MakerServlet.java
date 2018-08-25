@@ -72,6 +72,11 @@ public class MakerServlet extends HttpServlet {
 					mDesc
 					);
 			request.setAttribute("rMap", ms.insertMaker(mk));
+		}else if(cmd.equals("makerDelete")) {
+			String mNum = request.getParameter("mNum");
+			Maker mk = new Maker(Integer.parseInt(mNum),null,0,0,0,null);
+			request.setAttribute("rMap", ms.deleteMaker(mk));
+			uri = "/views/maker/makerView";
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(uri);
 		rd.forward(request, response);

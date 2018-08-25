@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/common.jsp"%>
+<c:if test="${!empty rMap}">
+<script>
+	alert('${rMap.msg}');
+	if('${rMap.success}' == 'true'){
+		location.href="/maker/makerList";
+	}
+</script>	
+</c:if>
 <body>
 	<div class="container">
 		<table class="table table-bordered">

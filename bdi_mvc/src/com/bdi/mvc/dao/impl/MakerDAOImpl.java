@@ -151,7 +151,18 @@ public class MakerDAOImpl implements MakerDAO {
 
 	@Override
 	public int deleteMaker(Maker mk) {
-		// TODO Auto-generated method stub
+		Connection con = DBCon.getCon();
+		String sql = "delete from maker " + 
+				"where mNum = ?";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, mk.getMnum());
+			return ps.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBCon.close();
+		}
 		return 0;
 	}
 

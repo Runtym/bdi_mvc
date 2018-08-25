@@ -13,14 +13,6 @@
     <url-pattern>/views/*</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>UserServlet</servlet-name>
-    <servlet-class>com.bdi.mvc.servlet.UserServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>UserServlet</servlet-name>
-    <url-pattern>/user/*</url-pattern>
-  </servlet-mapping>
-  <servlet>
     <servlet-name>MakerServlet</servlet-name>
     <servlet-class>com.bdi.mvc.servlet.MakerServlet</servlet-class>
   </servlet>
@@ -29,12 +21,20 @@
     <url-pattern>/maker/*</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>TestServlet</servlet-name>
-  	<servlet-class>com.bdi.mvc.servlet.TestServlet</servlet-class>
+    <servlet-name>TestServlet</servlet-name>
+    <servlet-class>com.bdi.mvc.servlet.TestServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>TestServlet</servlet-name>
-  	<url-pattern>/test</url-pattern>
+    <servlet-name>TestServlet</servlet-name>
+    <url-pattern>/test</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>com.bdi.mvc.servlet.UserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/user/*</url-pattern>
   </servlet-mapping>
   <error-page>
     <error-code>404</error-code>
