@@ -11,7 +11,7 @@
 </c:if>
 <body>
 	<div class="container">
-	<form action="/maker/makerInsert" method="post">
+	<form action="/maker/makerUpdate" method="post">
 		<table class="table table-bordered">
 			<tr>
 				<td>번호</td>
@@ -37,6 +37,7 @@
 				<td colspan="2"><button>메이커수정</button></td>
 			</tr>
 		</table>
+		<input type="hidden" type="number" name="mNum" value="${maker.mnum}">
 	</form>
 	</div>
 </body>

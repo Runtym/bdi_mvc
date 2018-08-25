@@ -28,8 +28,16 @@
     <servlet-name>MakerServlet</servlet-name>
     <url-pattern>/maker/*</url-pattern>
   </servlet-mapping>
+  <servlet>
+  	<servlet-name>TestServlet</servlet-name>
+  	<servlet-class>com.bdi.mvc.servlet.TestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>TestServlet</servlet-name>
+  	<url-pattern>/test</url-pattern>
+  </servlet-mapping>
   <error-page>
-  	<error-code>404</error-code>
-  	<location>/WEB-INF/views/error/notFound.jsp</location>
+    <error-code>404</error-code>
+    <location>/WEB-INF/views/error/notFound.jsp</location>
   </error-page>
 </web-app>
