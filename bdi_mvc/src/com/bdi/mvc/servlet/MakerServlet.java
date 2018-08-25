@@ -23,7 +23,7 @@ public class MakerServlet extends HttpServlet {
 		if(cmd.equals("makerList")) {
 			List<Maker> makerList = ms.getMakerList(null);
 			request.setAttribute("list", makerList);
-		}else if(cmd.equals("makerView")) {
+		}else if(cmd.equals("makerView") || cmd.equals("makerUpdate")) {
 			String mNumStr = request.getParameter("mNum");
 			if(mNumStr==null) {
 				request.setAttribute("msg","메이커 넘버 없이 화면 요청은 불가능 합니다.");
@@ -46,9 +46,9 @@ public class MakerServlet extends HttpServlet {
 					mDesc
 					);
 			request.setAttribute("rMap", ms.insertMaker(mk));
-		}else if(cmd.equals("updateMaker")) {
+		}else if(cmd.equals("makerUpdate")) {
 			
-		}else if(cmd.equals("deleteMaker")) {
+		}else if(cmd.equals("makerDelete")) {
 			
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(uri);

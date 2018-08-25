@@ -18,18 +18,7 @@ public class DBCon {
 		String path = "/config/db.properties";
 		InputStream is = DBCon.class.getResourceAsStream(path);
 		try {
-			BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-			String line;
-			StringBuffer response = new StringBuffer(); 
-			while((line = rd.readLine()) != null) {
-			 response.append(line);
-			 response.append('\r');
-			}
-			System.out.println(response.toString());
-			rd.close();
-
-
-//			prop.load(is);
+			prop.load(is);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}finally {
@@ -69,8 +58,5 @@ public class DBCon {
 			}
 		}
 		con = null;
-	}
-	public static void main(String[] args) {
-		DBCon dbc = new DBCon();
 	}
 }

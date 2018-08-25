@@ -16,7 +16,6 @@
 				</tr>
 			</thead>
 			<tbody>
-			<%=request.getAttribute("list")%>
 			<c:forEach	items="${list}" var="m">
 				<tr>
 					<td>${m.mnum}</td>
@@ -31,7 +30,8 @@
 		</table>
 		<div>
 			<button onclick="goPage()">메이커등록</button>
-		</div>
+			
+		</div> 
 	</div>
 <script>
 	function goPage(){
