@@ -9,6 +9,7 @@ public class User {
 	private String uiDesc;
 	private int uiAge;
 	private Long diNo;
+	
 	public User() {}
 	public User(Long uiNo, String uiName, String uiId, String uiPwd, String uiDesc, int uiAge, Long diNo) {
 		super();

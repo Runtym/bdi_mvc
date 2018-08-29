@@ -21,20 +21,20 @@
     <url-pattern>/maker/*</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>TestServlet</servlet-name>
-    <servlet-class>com.bdi.mvc.servlet.TestServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TestServlet</servlet-name>
-    <url-pattern>/test</url-pattern>
-  </servlet-mapping>
-  <servlet>
     <servlet-name>UserServlet</servlet-name>
     <servlet-class>com.bdi.mvc.servlet.UserServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/user/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>DepartServlet</servlet-name>
+  	<servlet-class>com.bdi.mvc.servlet.DepartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DepartServlet</servlet-name>
+  	<url-pattern>/depart/*</url-pattern>
   </servlet-mapping>
   <error-page>
     <error-code>404</error-code>
