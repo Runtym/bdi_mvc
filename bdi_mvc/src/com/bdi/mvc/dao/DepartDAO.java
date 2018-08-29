@@ -12,4 +12,6 @@ public interface DepartDAO {
 	public List<Depart> selectDepartList(Depart depart)throws SQLException;
 	public Depart selectDepart(Depart depart)throws SQLException;
 	public int insertDepart(Depart depart)throws SQLException;
+	public int updateDepart(Depart depart)throws SQLException;
+	public int deleteDepart(Depart depart)throws SQLException;
 }

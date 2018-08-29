@@ -66,5 +66,30 @@ public class DepartDAOImpl implements DepartDAO {
 		}
 		return null;
 	}
+	@Override
+	public int updateDepart(Depart depart) throws SQLException {
+		String sql = "update depart_info set diName=?, diDesc=? ";
+		sql += " where diNo=?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, depart.getDiName());
+			ps.setString(2, depart.getDiDesc());
+			ps.setInt(3, depart.getDiNo());
+			return ps.executeUpdate();
+		}catch(SQLException e) {
+			throw e;
+		}
+	}
+	@Override
+	public int deleteDepart(Depart depart) throws SQLException {
+		String sql = "delete from depart_info where diNo=?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, depart.getDiNo());
+			return ps.executeUpdate();
+		}catch(SQLException e) {
+			throw e;
+		}
+	}
 
 }

@@ -20,6 +20,7 @@
 	window.onload = function(){
 		var btns = document.querySelectorAll('button[data-page]');
 		for(var i=0;i<btns.length;i++){
+			btns[i].setAttribute('type','button');
 			btns[i].onclick = function(){
 				location.href= this.getAttribute('data-page')
 			}
