@@ -48,7 +48,7 @@ public class GameServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		uri = req.getRequestURI();
 		//클라이언트의 요청이 무엇인지 판단하기 위해 마지막 '/'를 기준으로 uri를 잘라준다.
-		String cmd = uri.substring(uri.indexOf("/") + 1);
+		String cmd = uri.substring(uri.lastIndexOf("/") + 1);
 		try {
 			//클라이언트의 요청이 gameList일경우(uri : localhost/game/gameList)
 			if(cmd.equals("gameList")) {

@@ -11,6 +11,7 @@ import com.bdi.mvc.service.GameService;
 import com.bdi.mvc.vo.Game;
 
 public class GameServiceImpl implements GameService{
+	//서비스에서 사용할 GameDAOImpl을 생성한다.
 	private GameDAO gdao = new GameDAOImpl();
 	
 	@Override
