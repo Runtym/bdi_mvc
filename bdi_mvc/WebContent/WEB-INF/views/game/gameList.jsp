@@ -22,7 +22,7 @@
 				<td>${game.gcPrice}</td>
 				<td>${game.gcVendor}</td>
 				<td>${game.gcOrder}</td>
-				<td>${game.gcImg}</td>
+				<td><img src="${game.gcImg}" width="100" height="100"></td>
 			</tr>
 		</c:forEach>		
 		</tbody>

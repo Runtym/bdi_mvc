@@ -3,6 +3,7 @@ package com.bdi.mvc.servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bdi.mvc.common.UploadFiles;
 import com.bdi.mvc.service.GameService;
 import com.bdi.mvc.service.impl.GameServiceImpl;
 import com.bdi.mvc.vo.Game;
@@ -73,6 +75,41 @@ public class GameServlet extends HttpServlet {
 	//위의 설명된것과 같이 똑같은 url로 호출한다고 하더라도
 	//클라이언트의 method방식에 따라 doGet//doPost가 실행된다.
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		uri = req.getRequestURI();
+		//클라이언트의 요청이 무엇인지 판단하기 위해 마지막 '/'를 기준으로 uri를 잘라준다.
+		String cmd = uri.substring(uri.lastIndexOf("/") + 1);
+		req.setCharacterEncoding("utf-8");
+		try {
+			//클라이언트의 요청이 gameList일경우(uri : localhost/game/gameList)
+			if(cmd.equals("gameInsert")) {
+				Map<String,String> param = UploadFiles.saveFileList(req);
+				if(param.isEmpty()) {
+					new ServletException("파일 저장이 실패하였습니다.");
+				}
+				String gcName = param.get("gcName");
+				String gcPrice = param.get("gcPrice");
+				String gcVendor = param.get("gcVendor");
+				String gcDesc = param.get("gcDesc");
+				String gcImg = param.get("gcImg");
+				Game game = new Game(null,
+						gcName,
+						Integer.parseInt(gcPrice),
+						gcVendor,
+						null,
+						gcDesc,
+						gcImg
+						);
+				//게임서비스에서 game목록을 인서트 함수를 호출해준다.
+				Map<String,Object> rMap = gs.insertGame(game);
+				//해당 리스트를 포워딩할 jsp에서 포문을 돌리며 출력해주기위해
+				//rMap라는 키값을 저장한다.
+				req.setAttribute("rMap", rMap);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		//최하단에 있는 doService 메소드를 호출한다.
+		doService(req,res);
 		doService(req,res);
 	}
 	

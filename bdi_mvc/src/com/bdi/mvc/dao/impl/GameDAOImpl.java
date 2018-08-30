@@ -53,21 +53,36 @@ public class GameDAOImpl implements GameDAO {
 	}
 
 	@Override
-	public Map<String, Object> insertGame(Game game) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public int insertGame(Game game) throws SQLException {
+		String sql = "insert into game_chart(gcName, gcPrice, gcVendor, gcImg)";
+		sql += " values(?,?,?,?)";
+		try {
+			//여기서 connection을 맺는 코드가 없는 이유는 서비스에서 
+			//GameDAOImpl의 setConnection(DBCon.getCon())을 호출해
+			//여기서 사용할 connection을 셋팅해주기 때문이다.
+			ps = con.prepareStatement(sql);
+			ps.setString(1, game.getGcName());
+			ps.setInt(2, game.getGcPrice());
+			ps.setString(3, game.getGcVendor());
+			ps.setString(4, game.getGcImg());
+			return ps.executeUpdate();
+		}catch(SQLException e) {
+			throw e;
+		}finally {
+			ps.close();
+		}
 	}
 
 	@Override
-	public Map<String, Object> updateGame(Game game) throws SQLException {
+	public int updateGame(Game game) throws SQLException {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 	@Override
-	public Map<String, Object> deleteGame(Game game) throws SQLException {
+	public int deleteGame(Game game) throws SQLException {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 	@Override

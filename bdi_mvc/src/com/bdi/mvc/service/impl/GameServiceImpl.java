@@ -1,6 +1,7 @@
 package com.bdi.mvc.service.impl;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -37,8 +38,24 @@ public class GameServiceImpl implements GameService{
 
 	@Override
 	public Map<String, Object> insertGame(Game game) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		//GameDAOImpl에서 사용할 Connection을 여기서 셋해준다.
+		gdao.setConnection(DBCon.getCon());
+		try {
+			Map<String, Object> rMap = new HashMap<String,Object>();
+			int cnt = gdao.insertGame(game);
+			rMap.put("cnt", cnt);
+			rMap.put("msg","게임등록이 실패");
+			if(cnt==1) {
+				rMap.put("msg","게임등록이 성공");
+			}
+			return rMap;
+		}catch(SQLException e) {
+			throw e;
+		}finally {
+			//finally가 실행되는 시점은 성공하든 실패하던 무조건 완료된뒤 실행함으로
+			//위에서 맺었던 db Connection을 여기서 끊어준다.
+			DBCon.close();
+		}
 	}
 
 	@Override
