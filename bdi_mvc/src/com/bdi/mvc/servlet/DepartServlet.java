@@ -46,7 +46,10 @@ public class DepartServlet extends HttpServlet {
 				Depart depart = new Depart(null, diName, diDesc, null);
 				request.setAttribute("rMap", ds.insertDepart(depart));
 			}else if(cmd.equals("departUpdate")) {
-				
+				String diName = request.getParameter("diName");
+				String diDesc = request.getParameter("diDesc");
+				Depart depart = new Depart(Integer.parseInt(request.getParameter("diNo")), diName, diDesc, null);
+				request.setAttribute("rMap", ds.updateDepart(depart));
 			}else if(cmd.equals("departDelete")) {
 				Depart depart = new Depart(Integer.parseInt(request.getParameter("diNo")),
 						null,null,null);

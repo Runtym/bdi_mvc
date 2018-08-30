@@ -33,6 +33,7 @@
 					<td colspan="2"><button>부서수정</button></td>
 				</tr>
 			</table>
+			<input type="hidden" name="diNo" value="${depart.diNo}">
 		</form>
 	</div>
 </body>
