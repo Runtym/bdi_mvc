@@ -27,27 +27,21 @@ public class UploadFiles {
 		sfu.setHeaderEncoding("utf-8");
 		sfu.setSizeMax(1024*1024*100); //100MB
 		sfu.setFileSizeMax(1024*1024*50); //50MB
-		String path = UPLOAD_PATH + File.separator + "files";
-		File upPath = new File(path);
-		if(!upPath.exists()) {
-			upPath.mkdir();
-		}
 		try {
 			List<FileItem> fList = sfu.parseRequest(req);
 			
 			if(fList==null || fList.size()==0) {
 				throw new ServletException("업로드할 파일이 없습니다!!");
 			}
-			int cnt = 0;
 			Map<String,String> params = new HashMap<String,String>();
 			for(FileItem fi : fList) {
 				if(!fi.isFormField()) {
-					File f = new File(fi.getName());
-					String fileName = f.getName();
-					String filePath = path + File.separator + fileName;
+					String fEndName = fi.getName().substring(fi.getName().lastIndexOf("."));
+					String fileName = File.separator + "files" + File.separator + System.currentTimeMillis() + fEndName;
+					String filePath = UPLOAD_PATH + File.separator + fileName;
 					File sFile = new File(filePath);
 					fi.write(sFile);
-					params.put(fi.getFieldName(), filePath);
+					params.put(fi.getFieldName(), fileName);
 				}else {
 					params.put(fi.getFieldName(), fi.getString("utf-8"));
 				}
