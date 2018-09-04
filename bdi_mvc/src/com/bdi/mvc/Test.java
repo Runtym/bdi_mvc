@@ -5,42 +5,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-class FileItem{
-	String name;
-	String string;
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getString() {
-		return string;
-	}
-	public void setString(String string) {
-		this.string = string;
-	}
-	
-}
 public class Test {
-	public static void main(String[] args) {
-		List<FileItem> fList = new ArrayList<FileItem>();
-		FileItem fi = new FileItem();
-		fi.setName("gcName");
-		fi.setString("카트라이더");
-		fList.add(fi);
-		
-		fi = new FileItem();
-		fi.setName("gcPrice");
-		fi.setString("10000");
-		fList.add(fi);
-		
-		
-		Map<String,String> param = new HashMap<String,String>();
-		for(FileItem ff:fList) {
-			param.put(ff.getName(), ff.getString());
+	public static Map<String,String> map;
+	public static int idx = 1;
+	
+	public static void doGetSomething() {
+		if(map==null) {
+			System.out.println("map 메모리 생성");
+			map = new HashMap<String,String>();
 		}
-		
-		System.out.println(param.get("gcName"));
+		System.out.println(idx++ + "번 doGet 호출!!");
+	}
+	public static void main(String[] args) {
+		doGetSomething();
+		doGetSomething();
+		doGetSomething();
+		doGetSomething();
+		doGetSomething();
+		doGetSomething();
+		doGetSomething();
+		doGetSomething();
+		doGetSomething();
+		doGetSomething();
 	}
 }

@@ -42,6 +42,10 @@ public class GameServlet extends HttpServlet {
 	private GameService gs = new GameServiceImpl();
 	private String uri;
 	
+	public GameServlet() {
+		System.out.println("난 몇번 호출될까?");
+	}
+	
 	//doGet 메소드는 클라이언트에서 get방식으로 보냈을때 실행되는 함수이다.
 	//예를들어 localhost/game/gameList 라는 url로 method방식을 get으로 요청할경우
 	//web.xml에 기술되어있는 url-pattern /game/*을 만족하기 때문에
@@ -109,7 +113,6 @@ public class GameServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		//최하단에 있는 doService 메소드를 호출한다.
-		doService(req,res);
 		doService(req,res);
 	}
 	
