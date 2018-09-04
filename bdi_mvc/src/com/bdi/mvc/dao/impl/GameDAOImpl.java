@@ -27,7 +27,7 @@ public class GameDAOImpl implements GameDAO {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				Game g = new Game(rs.getInt("gcNum1"),
+				Game g = new Game(rs.getInt("gcNum"),
 							rs.getString("gcName"),
 							rs.getInt("gcPrice"),
 							rs.getString("gcVendor"),

@@ -10,6 +10,7 @@
 	</script>
 </c:if>
 <body>
+	<img src="/files/lol.jpg"">
 	<div class="container">
 		<form action="/game/gameInsert" method="post" enctype="multipart/form-data">
 			<table class="table table-bordered">
