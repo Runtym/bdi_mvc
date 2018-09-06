@@ -95,10 +95,10 @@
 				<is_open_after_saved>true</is_open_after_saved>
 			</export_image_setting>
 			<export_java_setting>
-				<java_output></java_output>
-				<package_name></package_name>
-				<class_name_suffix></class_name_suffix>
-				<src_file_encoding></src_file_encoding>
+				<java_output>src</java_output>
+				<package_name>com.board.bdi.vo</package_name>
+				<class_name_suffix>VO</class_name_suffix>
+				<src_file_encoding>UTF-8</src_file_encoding>
 				<with_hibernate>false</with_hibernate>
 			</export_java_setting>
 			<export_testdata_setting>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2018-09-05 21:21:50</creation_date>
-			<updated_date>2018-09-06 19:12:29</updated_date>
+			<updated_date>2018-09-06 20:21:02</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
