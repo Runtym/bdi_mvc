@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<foods>
+	<food>
+		<name>치킨</name>
+		<price>20000</price>
+	</food>
+	<food>
+		<name>스시</name>
+		<price>30000</price>
+	</food>
+	<food>
+		<name>보쌈</name>
+		<price>35000</price>
+	</food>
+	<food>
+		<name>족발</name>
+		<price>35000</price>
+	</food>
+</foods>
