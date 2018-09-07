@@ -39,7 +39,7 @@ public class DBCon {
 				con = DriverManager.getConnection(
 						prop.getProperty("url"), prop.getProperty("id"), 
 						prop.getProperty("pwd"));
-				
+				con.setAutoCommit(false);
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} catch (SQLException e) {
@@ -58,5 +58,20 @@ public class DBCon {
 			}
 		}
 		con = null;
+	}
+	
+	public static void commit() {
+		try {
+			con.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public static void rollback() {
+		try {
+			con.rollback();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

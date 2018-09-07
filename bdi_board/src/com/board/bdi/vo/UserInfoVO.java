@@ -233,4 +233,11 @@ public class UserInfoVO implements Serializable {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "UserInfoVO [uinum=" + uinum + ", uiid=" + uiid + ", uipwd=" + uipwd + ", uiname=" + uiname
+				+ ", uiemail=" + uiemail + ", boardInfoSet=" + boardInfoSet + ", commentInfoSet=" + commentInfoSet
+				+ "]";
+	}
+
 }
