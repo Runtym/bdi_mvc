@@ -48,12 +48,15 @@ public class UserServlet extends HttpServlet {
 		try {
 			if(cmd.equals("userJoin")) {
 				us.joinUser(request);
+			}else if(cmd.equals("userLogin")) {
+				us.loginUser(request);
 			}
 		}catch(SQLException e) {
 			throw new ServletException("에러 : " + e.getMessage());
 		}
 		doService(request,response);
 	}
+	
 	private void doService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = request.getRequestDispatcher(uri);
 		rd.forward(request, response);

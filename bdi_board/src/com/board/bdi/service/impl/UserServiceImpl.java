@@ -1,11 +1,10 @@
 package com.board.bdi.service.impl;
 
-import static org.junit.Assert.assertEquals;
-
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.board.bdi.common.DBCon;
 import com.board.bdi.common.ParseUtil;
@@ -30,6 +29,7 @@ public class UserServiceImpl implements UserService {
 				req.setAttribute("err", "아이디 중복 됬다고!!");
 			}
 		} catch (SQLException e) {
+			DBCon.rollback();
 			e.printStackTrace();
 		} finally {
 			DBCon.close();
@@ -37,9 +37,28 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void loginUser(HttpServletRequest req) throws SQLException {
-		// TODO Auto-generated method stub
-
+	public void loginUser(HttpServletRequest req) throws SQLException, ServletException {
+		UserInfoVO ui = ParseUtil.parseRequest(req, UserInfoVO.class);
+		udao.setCon(DBCon.getCon());
+		try {
+			UserInfoVO rUi = udao.selectUser(ui);
+			if (rUi != null) {
+				if(rUi.getUipwd().equals(ui.getUipwd())) {
+					HttpSession hs = req.getSession();
+					hs.setAttribute("user", rUi);
+					req.setAttribute("msg", rUi.getUiname() + "님 환영합니다.");
+				}else {
+					req.setAttribute("err", "비밀번호를 확인해주세요.");
+				}
+			} else {
+				req.setAttribute("err", "아이디를 확인해주세요.");
+			}
+		} catch (SQLException e) {
+			DBCon.rollback();
+			e.printStackTrace();
+		} finally {
+			DBCon.close();
+		}
 	}
 
 	@Override
