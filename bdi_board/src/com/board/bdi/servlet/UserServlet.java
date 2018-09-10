@@ -35,8 +35,17 @@ public class UserServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		uri = "/views" + request.getRequestURI();
+		String cmd = uri.substring(uri.lastIndexOf("/")+1);
+		try {
+			if(cmd.equals("userLogout")) {
+				us.logoutUser(request);
+				uri = "/views/user/userLogin";
+			}
+		}catch(SQLException e) {
+			throw new ServletException("에러 : " + e.getMessage());
+		}
+		doService(request,response);
 	}
 
 	/**

@@ -4,6 +4,7 @@
 <c:if test="${!empty msg}">
 	<script>
 		alert("${msg}");
+		location.href="/";
 	</script>
 </c:if>
 <c:if test="${!empty err}">
@@ -26,10 +27,13 @@
                     <div class="form-group">
                         <label for="inputPassword">비밀번호</label>
                         <input type="password" class="form-control" id="uipwd" name="uipwd" required placeholder="비밀번호를 입력해주세요">
-                    </div>
+                    </div> 
                     <div class="form-group text-center">
                         <button type="submit" id="join-submit" class="btn btn-primary">
                             로그인<i class="fa fa-check spaceLeft"></i>
+                        </button> 
+                        <button data-page="/views/user/userJoin" class="btn btn-primary">
+                            회원가입<i class="fa fa-check spaceLeft"></i>
                         </button>
                     </div>
                 </form>

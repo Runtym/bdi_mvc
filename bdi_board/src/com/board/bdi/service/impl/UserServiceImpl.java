@@ -63,8 +63,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void logoutUser(HttpServletRequest req) throws SQLException {
-		// TODO Auto-generated method stub
-
+		HttpSession hs = req.getSession();
+		hs.invalidate();
 	}
 
 	@Override
