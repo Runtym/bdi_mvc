@@ -25,7 +25,7 @@ public class AuthFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest)request;
 		String uri = req.getRequestURI();
 		System.out.println(uri);
-		HttpSession hs = req.getSession();
+		HttpSession hs = req.getSession(); 
 		if(hs.getAttribute("user")==null && !uri.matches(excludeUris)) {
 			if(uri.indexOf("userLogin")==-1 && uri.indexOf("userJoin")==-1) {
 				HttpServletResponse res = (HttpServletResponse)response;
