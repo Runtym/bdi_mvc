@@ -22,8 +22,21 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public int insertBoard(BoardInfoVO bi) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql = "insert into board_info(bititle, bitext,bicredat, "
+				+ "bimoddat,bicnt, biactive, uinum,bifile)";
+		sql += " values(?,?,now(),now(),0,1,?,?)";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, bi.getBititle());
+			ps.setString(2, bi.getBitext());
+			ps.setInt(3, bi.getUinum());
+			ps.setString(4, bi.getBifile());
+			return ps.executeUpdate();
+		}catch(SQLException e) {
+			throw e;
+		}finally {
+			close();
+		}
 	}
 
 	@Override
@@ -48,6 +61,7 @@ public class BoardDAOImpl implements BoardDAO {
 				bi.setBicredat(rs.getString("bicredat"));
 				bi.setBimoddat(rs.getString("bimoddat"));
 				bi.setBicnt(rs.getInt("bicnt"));
+				bi.setUinum(rs.getInt("uinum"));
 				biList.add(bi);
 			}
 			return biList;

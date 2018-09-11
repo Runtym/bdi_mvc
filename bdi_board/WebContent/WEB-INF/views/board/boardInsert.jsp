@@ -8,8 +8,7 @@
                 </div>
             </div>
             <div class="col-sm-6 col-md-offset-3">
-                <form>
-
+                <form method="post" action="/board/boardInsert" enctype="multipart/form-data">
 					<div class="form-group"> <!-- Name field -->
 						<label class="control-label " for="uiname">등록자</label>
 						<input class="form-control" id="uiname" name="uiname" type="text" value="${user.uiname}" disabled/>
@@ -32,7 +31,7 @@
 					<div class="form-group">
 						<button class="btn btn-primary " name="submit" type="submit">Submit</button>
 					</div>
-					
+					<input type="hidden" name="uinum" value="${user.uinum}">
 				</form>								
 			
             </div>

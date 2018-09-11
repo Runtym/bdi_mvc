@@ -13,7 +13,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 public class UploadFiles {
-	private static final String UPLOAD_PATH = "C:\\bdi_study\\workspace\\gits\\bdi_mvc\\bdi_mvc\\WebContent";
+	private static final String UPLOAD_PATH = "C:\\bdi_study\\workspace\\gits\\bdi_mvc\\bdi_board\\WebContent";
 	
 	public static Map<String,String> saveFileList(HttpServletRequest req) throws ServletException {
 		if(!ServletFileUpload.isMultipartContent(req)) {

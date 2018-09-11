@@ -34,8 +34,16 @@ public class BoardServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		uri = "/views" + request.getRequestURI();
+		String cmd = uri.substring(uri.lastIndexOf("/")+1);
+		try {
+			if(cmd.equals("boardInsert")) {
+				bs.insertBoard(request);
+			}
+		}catch(SQLException e){
+			throw new ServletException("에러 : " + e.getMessage());
+		}
+		doService(request,response);
 	}
 
 	private void doService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
