@@ -11,6 +11,17 @@
 <link rel="stylesheet" href="/bs3/css/bootstrap-theme.css"/>
 <script src="/bs3/js/jquery-3.3.1.js"></script>
 <script src="/bs3/js/bootstrap.js"></script>
+<style>
+	tr>td{
+		text-align:center
+	}
+	tr>th{
+		text-align:center
+	}
+	.btns{
+		text-align:right
+	}
+</style>
 </head>
 <script>
 	window.onload = function(){
