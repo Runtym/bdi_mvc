@@ -3,7 +3,6 @@
 <c:if test="${!empty ciCnt}">
 	<script>
 		alert("커멘트가 정상적으로 등록 되었습니다.");
-		location.href = "/board/boardView?binum=${param.binum}"
 	</script>
 </c:if>
 <body>

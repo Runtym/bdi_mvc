@@ -43,7 +43,7 @@ public class BoardServlet extends HttpServlet {
 				bs.insertBoard(request);
 			}else if(cmd.equals("commentInsert")) {
 				bs.insertComment(request);
-				uri = "/board/boardView?binum=" + request.getParameter("binum");
+				uri = "/views/board/boardView?binum=" + request.getParameter("binum");
 			}
 		}catch(SQLException e){
 			throw new ServletException("에러 : " + e.getMessage());

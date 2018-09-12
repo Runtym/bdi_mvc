@@ -95,6 +95,9 @@ public class BoardServiceImpl implements BoardService {
 		CommentInfoVO ci = ParseUtil.parseRequest(req, CommentInfoVO.class);
 		bdao.setCon(DBCon.getCon());
 		try {
+			BoardInfoVO bi = new BoardInfoVO();
+			bi.setBinum(ci.getBinum());
+			req.setAttribute("bi", bdao.selectBoard(bi));
 			req.setAttribute("ciCnt", bdao.insertCommment(ci));
 			DBCon.commit();
 		}catch(SQLException e) {
