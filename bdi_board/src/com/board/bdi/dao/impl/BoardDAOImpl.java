@@ -155,8 +155,43 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public List<CommentInfoVO> selectCommentList(CommentInfoVO ci) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select ci.*, ui.uiname from  comment_info ci, user_info ui\r\n" + 
+				"where ci.uinum=ui.uinum and binum=?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, ci.getBinum());
+			rs = ps.executeQuery();
+			List<CommentInfoVO> ciList = new ArrayList<CommentInfoVO>();
+			while(rs.next()) {
+				ci = new CommentInfoVO();
+				ci.setCinum(rs.getInt("cinum"));
+				ci.setBinum(rs.getInt("binum"));
+				ci.setCicredat(rs.getString("cicredat"));
+				ci.setCitext(rs.getString("citext"));
+				ci.setUinum(rs.getInt("uinum"));
+				ci.setUiname(rs.getString("uiname"));
+				ciList.add(ci);
+			}
+			return ciList;
+		}catch(SQLException e) {
+			throw e;
+		}finally {
+			close();
+		}
+	}
+
+	@Override
+	public int deleteComment(CommentInfoVO ci) throws SQLException {
+		String sql = "delete from comment_info where cinum=?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, ci.getCinum());
+			return ps.executeUpdate();
+		}catch(SQLException e) {
+			throw e;
+		}finally {
+			close();
+		}
 	}
 
 }

@@ -28,6 +28,9 @@ public class BoardServlet extends HttpServlet {
 				bs.selectBoardList(request);
 			}else if(cmd.equals("boardView")) {
 				bs.selectBoard(request);
+			}else if(cmd.equals("commentDelete")) {
+				bs.deleteComment(request);
+				uri = "/views/board/boardView?binum=" + request.getParameter("binum");
 			}
 		}catch(SQLException e){
 			throw new ServletException("에러 : " + e.getMessage());

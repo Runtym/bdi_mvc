@@ -5,6 +5,11 @@
 		alert("커멘트가 정상적으로 등록 되었습니다.");
 	</script>
 </c:if>
+<c:if test="${!empty ciDelCnt}">
+	<script>
+		alert("커멘트가 정상적으로 삭제 되었습니다.");
+	</script>
+</c:if>
 <body>
         <article class="container">
             <div class="page-header">
@@ -41,7 +46,14 @@
 					<input type="hidden" name="binum" value="${bi.binum}">
 					<input type="hidden" name="uinum" value="${user.uinum}">
 				</form>								
-			
+				<c:forEach items="${ciList}" var="ci">
+					<div class="form-group">
+						${ci.uiname} : ${ci.citext} [${ci.cicredat}] 
+						<c:if test="${ci.uinum eq user.uinum}">
+							<a href="/comment/commentDelete?cinum=${ci.cinum}&binum=${ci.binum}">x</a>
+						</c:if>
+					</div>
+				</c:forEach>
             </div>
 
         </article>

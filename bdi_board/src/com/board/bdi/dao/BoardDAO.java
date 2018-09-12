@@ -16,5 +16,6 @@ public interface BoardDAO {
 	
 	public int insertCommment(CommentInfoVO ci)throws SQLException;	
 	public CommentInfoVO selectComment(CommentInfoVO ci)throws SQLException;
-	public List<CommentInfoVO> selectCommentList(CommentInfoVO ci)throws SQLException;	
+	public List<CommentInfoVO> selectCommentList(CommentInfoVO ci)throws SQLException;
+	public int deleteComment(CommentInfoVO ci) throws SQLException;
 }

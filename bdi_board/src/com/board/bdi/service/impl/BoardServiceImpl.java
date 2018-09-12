@@ -37,6 +37,9 @@ public class BoardServiceImpl implements BoardService {
 		bdao.setCon(DBCon.getCon());
 		try {
 			bdao.updateBoardCnt(bi);
+			CommentInfoVO ci = new CommentInfoVO();
+			ci.setBinum(bi.getBinum());
+			req.setAttribute("ciList", bdao.selectCommentList(ci));
 			req.setAttribute("bi", bdao.selectBoard(bi));
 			DBCon.commit();
 		}catch(SQLException e) {
@@ -99,6 +102,7 @@ public class BoardServiceImpl implements BoardService {
 			bi.setBinum(ci.getBinum());
 			req.setAttribute("bi", bdao.selectBoard(bi));
 			req.setAttribute("ciCnt", bdao.insertCommment(ci));
+			req.setAttribute("ciList", bdao.selectCommentList(ci));
 			DBCon.commit();
 		}catch(SQLException e) {
 			throw e;
@@ -109,7 +113,20 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void deleteComment(HttpServletRequest req) throws SQLException, ServletException {
-
+		CommentInfoVO ci = ParseUtil.parseRequest(req, CommentInfoVO.class);
+		bdao.setCon(DBCon.getCon());
+		try {
+			BoardInfoVO bi = new BoardInfoVO();
+			bi.setBinum(ci.getBinum());
+			req.setAttribute("ciDelCnt", bdao.deleteComment(ci));
+			req.setAttribute("bi", bdao.selectBoard(bi));
+			req.setAttribute("ciList", bdao.selectCommentList(ci));
+			DBCon.commit();
+		}catch(SQLException e) {
+			throw e;
+		}finally {
+			DBCon.close();
+		}
 		
 	}
 
