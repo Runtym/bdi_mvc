@@ -13,6 +13,7 @@ import com.board.bdi.dao.BoardDAO;
 import com.board.bdi.dao.impl.BoardDAOImpl;
 import com.board.bdi.service.BoardService;
 import com.board.bdi.vo.BoardInfoVO;
+import com.board.bdi.vo.CommentInfoVO;
 
 public class BoardServiceImpl implements BoardService {
 	private BoardDAO bdao = new BoardDAOImpl();
@@ -32,8 +33,17 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void selectBoard(HttpServletRequest req) throws SQLException, ServletException {
-		// TODO Auto-generated method stub
-
+		BoardInfoVO bi = ParseUtil.parseRequest(req, BoardInfoVO.class);
+		bdao.setCon(DBCon.getCon());
+		try {
+			bdao.updateBoardCnt(bi);
+			req.setAttribute("bi", bdao.selectBoard(bi));
+			DBCon.commit();
+		}catch(SQLException e) {
+			throw e;
+		}finally {
+			DBCon.close();
+		}
 	}
 
 	@Override
@@ -66,6 +76,38 @@ public class BoardServiceImpl implements BoardService {
 	public void deleteBoard(HttpServletRequest req) throws SQLException, ServletException {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void selectCommentList(HttpServletRequest req) throws SQLException, ServletException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void selectComment(HttpServletRequest req) throws SQLException, ServletException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void insertComment(HttpServletRequest req) throws SQLException, ServletException {
+		CommentInfoVO ci = ParseUtil.parseRequest(req, CommentInfoVO.class);
+		bdao.setCon(DBCon.getCon());
+		try {
+			req.setAttribute("ciCnt", bdao.insertCommment(ci));
+			DBCon.commit();
+		}catch(SQLException e) {
+			throw e;
+		}finally {
+			DBCon.close();
+		}
+	}
+
+	@Override
+	public void deleteComment(HttpServletRequest req) throws SQLException, ServletException {
+
+		
 	}
 
 }

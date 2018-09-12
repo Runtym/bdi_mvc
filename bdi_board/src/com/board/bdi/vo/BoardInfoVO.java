@@ -42,7 +42,16 @@ public class BoardInfoVO implements Serializable {
 
 	private Integer uinum;
 	
+	private String uiname;
 	
+
+	public String getUiname() {
+		return uiname;
+	}
+
+	public void setUiname(String uiname) {
+		this.uiname = uiname;
+	}
 
 	@Override
 	public String toString() {

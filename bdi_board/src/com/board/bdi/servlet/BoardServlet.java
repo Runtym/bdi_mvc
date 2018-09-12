@@ -14,7 +14,7 @@ import com.board.bdi.service.BoardService;
 import com.board.bdi.service.impl.BoardServiceImpl;
 
 
-@WebServlet("/board/*")
+@WebServlet(urlPatterns= {"/board/*","/comment/*"})
 public class BoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String uri;
@@ -26,6 +26,8 @@ public class BoardServlet extends HttpServlet {
 		try {
 			if(cmd.equals("boardList")) {
 				bs.selectBoardList(request);
+			}else if(cmd.equals("boardView")) {
+				bs.selectBoard(request);
 			}
 		}catch(SQLException e){
 			throw new ServletException("에러 : " + e.getMessage());
@@ -39,6 +41,9 @@ public class BoardServlet extends HttpServlet {
 		try {
 			if(cmd.equals("boardInsert")) {
 				bs.insertBoard(request);
+			}else if(cmd.equals("commentInsert")) {
+				bs.insertComment(request);
+				uri = "/board/boardView?binum=" + request.getParameter("binum");
 			}
 		}catch(SQLException e){
 			throw new ServletException("에러 : " + e.getMessage());
