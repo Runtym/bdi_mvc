@@ -13,6 +13,7 @@ public interface BoardDAO {
 	public int updateBoardCnt(BoardInfoVO bi) throws SQLException;
 	public BoardInfoVO selectBoard(BoardInfoVO bi)throws SQLException;
 	public List<BoardInfoVO> selectBoardList(BoardInfoVO bi)throws SQLException;
+	public int countBoardList() throws SQLException;
 	
 	public int insertCommment(CommentInfoVO ci)throws SQLException;	
 	public CommentInfoVO selectComment(CommentInfoVO ci)throws SQLException;

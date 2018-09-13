@@ -1,12 +1,16 @@
 package test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Test {
 
+	public static void test(Map<String,String> map) {
+		map.put("out", "난 나가는놈");
+	}
 	public static void main(String[] args) {
-		String pattern = ".*(css|pang|gif|gs|js)|//*(userLogin|userJoin)";
-		String uri = "test.css";
-		System.out.println(uri.matches(pattern));
-		uri = "/views/user/userLogin";
-		System.out.println(uri.matches(pattern));
+		Map<String,String> map = new HashMap<String,String>();
+		test(map);
+		System.out.println(map.get("out"));
 	}
 }
