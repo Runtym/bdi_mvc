@@ -1,6 +1,7 @@
 package com.board.bdi.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -41,9 +42,14 @@ public class BoardServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		uri = "/views" + request.getRequestURI();
 		String cmd = uri.substring(uri.lastIndexOf("/")+1);
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter pw = response.getWriter();
+		
 		try {
 			if(cmd.equals("boardInsert")) {
 				bs.insertBoard(request);
+				pw.write("파일 전송 완료");
+				return;
 			}else if(cmd.equals("commentInsert")) {
 				bs.insertComment(request);
 				uri = "/views/board/boardView?binum=" + request.getParameter("binum");

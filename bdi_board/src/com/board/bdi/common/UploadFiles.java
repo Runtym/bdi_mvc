@@ -25,8 +25,8 @@ public class UploadFiles {
 		
 		ServletFileUpload sfu = new ServletFileUpload(diFactory);
 		sfu.setHeaderEncoding("utf-8");
-		sfu.setSizeMax(1024*1024*100); //100MB
-		sfu.setFileSizeMax(1024*1024*50); //50MB
+		sfu.setSizeMax(1024*1024*1000); //100MB
+		sfu.setFileSizeMax(1024*1024*1000); //50MB
 		try {
 			List<FileItem> fList = sfu.parseRequest(req);
 			
